@@ -1,4 +1,4 @@
-<script setup>
+<script setup="js">
 import axios from 'axios';
 </script>
 

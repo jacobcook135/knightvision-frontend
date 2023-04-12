@@ -1,3 +1,8 @@
+<script setup>
+
+
+</script>
+
 <template>
   <h1>Play Chess</h1>
 
@@ -71,25 +76,25 @@
       </tr>
       <tr>
           <th>3</th>
-          <td class="dark"></td>
-          <td class="light"></td>
-          <td class="dark"></td>
-          <td class="light"></td>
-          <td class="dark"></td>
-          <td class="light"></td>
-          <td class="dark"></td>
-          <td class="light" ref="h3"></td>
+          <td class="dark" ref="a3" @click="storeClick('a3')"></td>
+          <td class="light" ref="b3" @click="storeClick('b3')"></td>
+          <td class="dark" ref="c3" @click="storeClick('c3')"></td>
+          <td class="light" ref="d3" @click="storeClick('d3')"></td>
+          <td class="dark" ref="e3" @click="storeClick('e3')"></td>
+          <td class="light" ref="f3" @click="storeClick('f3')"></td>
+          <td class="dark" ref="g3" @click="storeClick('g3')"></td>
+          <td class="light" ref="h3" @click="storeClick('h3')"></td>
       </tr>
       <tr>
           <th>2</th>
-          <td class="light" ref="a2">♙</td>
-          <td class="dark" ref="b2">♙</td>
-          <td class="light" ref="c2">♙</td>
-          <td class="dark" ref="d2">♙</td>
-          <td class="light" ref="e2">♙</td>
-          <td class="dark" ref="f2">♙</td>
-          <td class="light" ref="g2">♙</td>
-          <td class="dark" ref="h2" @click="movePiece('h2', 'h3')">♙</td>
+          <td class="light" ref="a2" @click="storeClick('a2')">♙</td>
+          <td class="dark" ref="b2" @click="storeClick('b2')">♙</td>
+          <td class="light" ref="c2" @click="storeClick('c2')">♙</td>
+          <td class="dark" ref="d2" @click="storeClick('d2')">♙</td>
+          <td class="light" ref="e2" @click="storeClick('e2')">♙</td>
+          <td class="dark" ref="f2" @click="storeClick('f2')">♙</td>
+          <td class="light" ref="g2" @click="storeClick('g2')">♙</td>
+          <td class="dark" ref="h2" @click="storeClick('h2')">♙</td>
       </tr>
       <tr>
           <th>1</th>
@@ -120,12 +125,29 @@
 
 </style>
 
-<script>
+<script lang="js">
   export default {
+      data() {
+          return {
+            start: '',
+            end: '',
+          }
+      },
       methods: {
+          storeClick(pos) {
+            if (this.start == '') {
+                this.start = pos;
+            } else {
+                this.end = pos;
+                this.movePiece(this.start, this.end);
+            }
+          },
           movePiece(start, end) {
             this.$refs[end].textContent = this.$refs[start].textContent;
             this.$refs[start].textContent = '';
+
+            this.start = '';
+            this.end = '';
           }
       },
   }

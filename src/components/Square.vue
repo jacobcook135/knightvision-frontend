@@ -1,16 +1,15 @@
 <template>
-    <button class="square">{{ squareValue }}</button>
+    <button id="{{ pos }}" class="square">{{ state }}</button>
 </template>
  
 <script lang="js">
 export default {
     name: "Square",
     props: {
-        squareValue: String,
+        state: String,
         pos: String,
     },
     mounted() {
-        // console.log("from child component squareValue", this.squareValue);
     }
 }
 </script>

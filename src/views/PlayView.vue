@@ -1,9 +1,7 @@
 <template>
   <h1>Play Chess</h1>
 
-  <Square class="dark" :squareValue="squareValue[0]" pos="h2" @click="storeClick('h2')">♙</Square>
-  <Square class="dark" :squareValue="squareValue[0]" pos="h3" @click="storeClick('h3')">♙</Square>
-  <Square class="dark" :squareValue="squareValue[0]" pos="h4" @click="storeClick('h4')">♙</Square>
+  <Board />
 </template>
 
 <style>
@@ -20,33 +18,10 @@
 </style>
 
 <script lang="js">
-  import Square from '../components/Square.vue'
+  import Board from '../components/Board.vue'
 
   export default {
-      components: { Square },
-      data() {
-          return {
-            start: '',
-            end: '',
-            squareValue: Array(9).fill(null),
-          }
-      },
-      methods: {
-          storeClick(pos) {
-            if (this.start == '') {
-                this.start = pos;
-            } else {
-                this.end = pos;
-                this.movePiece(this.start, this.end);
-            }
-          },
-          movePiece(start, end) {
-            this.$refs[end].textContent = this.$refs[start].textContent;
-            this.$refs[start].textContent = '';
-
-            this.start = '';
-            this.end = '';
-          }
-      },
+    name: 'PlayView',
+    components: { Board },
   }
 </script>

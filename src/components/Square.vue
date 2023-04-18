@@ -17,13 +17,15 @@ export default {
 
 <style scoped>
 .square {
-    background-color: #fff;
-    width: 40px;
-    height: 40px;
+    width: 1.5em;
+    height: 1.5em;
     border: 1px solid #000;
     text-align: center;
     font-weight: bold;
-    line-height: 40px;
+    font-size: 32px;
+    line-height: 0;
+    display: table-cell;
+    vertical-align:middle;
 }
 
 .light { background: #eee; }

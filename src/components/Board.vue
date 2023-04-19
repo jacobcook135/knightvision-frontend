@@ -23,47 +23,47 @@
     </div>
 
     <div>
-      <Square color="light" pos="a6" :state="position['a6']"/>
-      <Square color="dark" pos="b6" :state="position['b6']"/>
-      <Square color="light" pos="c6" :state="position['c6']"/>
-      <Square color="dark" pos="d6" :state="position['d6']"/>
-      <Square color="light" pos="e6" :state="position['e6']"/>
-      <Square color="dark" pos="f6" :state="position['f6']"/>
-      <Square color="light" pos="g6" :state="position['g6']"/>
-      <Square color="dark" pos="h6" :state="position['h6']"/>
+      <Square color="light" pos="a6" :state="position['a6']" @click="storeClick('a6')"/>
+      <Square color="dark" pos="b6" :state="position['b6']" @click="storeClick('b6')"/>
+      <Square color="light" pos="c6" :state="position['c6']" @click="storeClick('c6')"/>
+      <Square color="dark" pos="d6" :state="position['d6']" @click="storeClick('d6')"/>
+      <Square color="light" pos="e6" :state="position['e6']" @click="storeClick('e6')"/>
+      <Square color="dark" pos="f6" :state="position['f6']" @click="storeClick('f6')"/>
+      <Square color="light" pos="g6" :state="position['g6']" @click="storeClick('g6')"/>
+      <Square color="dark" pos="h6" :state="position['h6']" @click="storeClick('h6')"/>
     </div>
 
     <div>
-      <Square color="dark" pos="a5" :state="position['a5']"/>
-      <Square color="light" pos="b5" :state="position['b5']"/>
-      <Square color="dark" pos="c5" :state="position['c5']"/>
-      <Square color="light" pos="d5" :state="position['d5']"/>
-      <Square color="dark" pos="e5" :state="position['e5']"/>
-      <Square color="light" pos="f5" :state="position['f5']"/>
-      <Square color="dark" pos="g5" :state="position['g5']"/>
-      <Square color="light" pos="h5" :state="position['h5']"/>
+      <Square color="dark" pos="a5" :state="position['a5']" @click="storeClick('a5')"/>
+      <Square color="light" pos="b5" :state="position['b5']" @click="storeClick('b5')"/>
+      <Square color="dark" pos="c5" :state="position['c5']" @click="storeClick('c5')"/>
+      <Square color="light" pos="d5" :state="position['d5']" @click="storeClick('d5')"/>
+      <Square color="dark" pos="e5" :state="position['e5']" @click="storeClick('e5')"/>
+      <Square color="light" pos="f5" :state="position['f5']" @click="storeClick('f5')"/>
+      <Square color="dark" pos="g5" :state="position['g5']" @click="storeClick('g5')"/>
+      <Square color="light" pos="h5" :state="position['h5']" @click="storeClick('h5')"/>
     </div>
 
     <div>
-      <Square color="light" pos="a4" :state="position['a4']"/>
-      <Square color="dark" pos="b4" :state="position['b4']"/>
-      <Square color="light" pos="c4" :state="position['c4']"/>
-      <Square color="dark" pos="d4" :state="position['d4']"/>
-      <Square color="light" pos="e4" :state="position['e4']"/>
-      <Square color="dark" pos="f4" :state="position['f4']"/>
-      <Square color="light" pos="g4" :state="position['g4']"/>
-      <Square color="dark" pos="h4" :state="position['h4']"/>
+      <Square color="light" pos="a4" :state="position['a4']" @click="storeClick('a4')"/>
+      <Square color="dark" pos="b4" :state="position['b4']" @click="storeClick('b4')"/>
+      <Square color="light" pos="c4" :state="position['c4']" @click="storeClick('c4')"/>
+      <Square color="dark" pos="d4" :state="position['d4']" @click="storeClick('d4')"/>
+      <Square color="light" pos="e4" :state="position['e4']" @click="storeClick('e4')"/>
+      <Square color="dark" pos="f4" :state="position['f4']" @click="storeClick('f4')"/>
+      <Square color="light" pos="g4" :state="position['g4']" @click="storeClick('g4')"/>
+      <Square color="dark" pos="h4" :state="position['h4']" @click="storeClick('h4')"/>
     </div>
 
     <div>
-      <Square color="dark" pos="a3" :state="position['a3']"/>
-      <Square color="light" pos="b3" :state="position['b3']"/>
-      <Square color="dark" pos="c3" :state="position['c3']"/>
-      <Square color="light" pos="d3" :state="position['d3']"/>
-      <Square color="dark" pos="e3" :state="position['e3']"/>
-      <Square color="light" pos="f3" :state="position['f3']"/>
-      <Square color="dark" pos="g3" :state="position['g3']"/>
-      <Square color="light" pos="h3" :state="position['h3']"/>
+      <Square color="dark" pos="a3" :state="position['a3']" @click="storeClick('a3')"/>
+      <Square color="light" pos="b3" :state="position['b3']" @click="storeClick('b3')"/>
+      <Square color="dark" pos="c3" :state="position['c3']" @click="storeClick('c3')"/>
+      <Square color="light" pos="d3" :state="position['d3']" @click="storeClick('d3')"/>
+      <Square color="dark" pos="e3" :state="position['e3']" @click="storeClick('e3')"/>
+      <Square color="light" pos="f3" :state="position['f3']" @click="storeClick('f3')"/>
+      <Square color="dark" pos="g3" :state="position['g3']" @click="storeClick('g3')"/>
+      <Square color="light" pos="h3" :state="position['h3']" @click="storeClick('h3')"/>
     </div>
 
     <div>

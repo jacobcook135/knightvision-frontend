@@ -1,12 +1,12 @@
 <template>
-    <button :id="pos" :class="'square ' + color">{{ state }}</button>
+    <button :id="pos" :class="'square ' + color + '-square ' + state?.color + '-piece'">{{ state?.figure }}</button>
 </template>
  
 <script lang="js">
 export default {
     name: "Square",
     props: {
-        state: String,
+        state: Object,
         pos: String,
         color: String,
     },
@@ -28,6 +28,10 @@ export default {
     vertical-align:middle;
 }
 
-.light { background: #eee; }
-.dark { background: #aaa; }
+.light-square { background: #8a2323; }
+.dark-square { background: #150cb0; }
+
+.white-piece {color: #fff;}
+.black-piece {color: #000;}
+
 </style>

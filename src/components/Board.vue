@@ -1,25 +1,25 @@
 <template>
   <div class="board">
     <div>
-      <Square color="light" pos="a8" :state="position['a8']"/>
-      <Square color="dark" pos="b8" :state="position['b8']"/>
-      <Square color="light" pos="c8" :state="position['c8']"/>
-      <Square color="dark" pos="d8" :state="position['d8']"/>
-      <Square color="light" pos="e8" :state="position['e8']"/>
-      <Square color="dark" pos="f8" :state="position['f8']"/>
-      <Square color="light" pos="g8" :state="position['g8']"/>
-      <Square color="dark" pos="h8" :state="position['h8']"/>
+      <Square color="light" pos="a8" :state="position['a8']" @click="storeClick('a8')"/>
+      <Square color="dark" pos="b8" :state="position['b8']" @click="storeClick('b8')"/>
+      <Square color="light" pos="c8" :state="position['c8']" @click="storeClick('c8')"/>
+      <Square color="dark" pos="d8" :state="position['d8']" @click="storeClick('d8')"/>
+      <Square color="light" pos="e8" :state="position['e8']" @click="storeClick('e8')"/>
+      <Square color="dark" pos="f8" :state="position['f8']" @click="storeClick('f8')"/>
+      <Square color="light" pos="g8" :state="position['g8']" @click="storeClick('g8')"/>
+      <Square color="dark" pos="h8" :state="position['h8']" @click="storeClick('h8')"/>
     </div>
 
     <div>
-      <Square color="dark" pos="a7" :state="position['a7']"/>
-      <Square color="light" pos="b7" :state="position['b7']"/>
-      <Square color="dark" pos="c7" :state="position['c7']"/>
-      <Square color="light" pos="d7" :state="position['d7']"/>
-      <Square color="dark" pos="e7" :state="position['e7']"/>
-      <Square color="light" pos="f7" :state="position['f7']"/>
-      <Square color="dark" pos="g7" :state="position['g7']"/>
-      <Square color="light" pos="h7" :state="position['h7']"/>
+      <Square color="dark" pos="a7" :state="position['a7']" @click="storeClick('a7')"/>
+      <Square color="light" pos="b7" :state="position['b7']" @click="storeClick('b7')"/>
+      <Square color="dark" pos="c7" :state="position['c7']" @click="storeClick('c7')"/>
+      <Square color="light" pos="d7" :state="position['d7']" @click="storeClick('d7')"/>
+      <Square color="dark" pos="e7" :state="position['e7']" @click="storeClick('e7')"/>
+      <Square color="light" pos="f7" :state="position['f7']" @click="storeClick('f7')"/>
+      <Square color="dark" pos="g7" :state="position['g7']" @click="storeClick('g7')"/>
+      <Square color="light" pos="h7" :state="position['h7']" @click="storeClick('h7')"/>
     </div>
 
     <div>
@@ -114,10 +114,14 @@
             "e8": {"figure": figures.king, "color": "black"}, "f8": {"figure": figures.bishop, "color": "black"}, "g8": {"figure": figures.knight, "color": "black"}, "h8": {"figure": figures.rook, "color": "black"},
             "a7": {"figure": figures.pawn, "color": "black"}, "b7": {"figure": figures.pawn, "color": "black"}, "c7": {"figure": figures.pawn, "color": "black"}, "d7": {"figure": figures.pawn, "color": "black"},
             "e7": {"figure": figures.pawn, "color": "black"}, "f7": {"figure": figures.pawn, "color": "black"}, "g7": {"figure": figures.pawn, "color": "black"}, "h7": {"figure": figures.pawn, "color": "black"},
-            "a6": null, "b6": null, "c6": null,  "d6": null, "e6": null, "f6": null, "g6": null, "h6": null,
-            "a5": null, "b5": null, "c5": null, "d5": null, "e5": null, "f5": null, "g5": null, "h5": null,
-            "a4": null, "b4": null, "c4": null, "d4": null, "e4": null, "f4": null, "g4": null, "h4": null,
-            "a3": null, "b3": null, "c3": null, "d3": null, "e3": null, "f3": null, "g3": null, "h3": null,
+            "a6": {"figure": null, "color": null}, "b6": {"figure": null, "color": null}, "c6": {"figure": null, "color": null},  "d6": {"figure": null, "color": null},
+            "e6": {"figure": null, "color": null}, "f6": {"figure": null, "color": null}, "g6": {"figure": null, "color": null}, "h6": {"figure": null, "color": null},
+            "a5": {"figure": null, "color": null}, "b5": {"figure": null, "color": null}, "c5": {"figure": null, "color": null}, "d5": {"figure": null, "color": null},
+            "e5": {"figure": null, "color": null}, "f5": {"figure": null, "color": null}, "g5": {"figure": null, "color": null}, "h5": {"figure": null, "color": null},
+            "a4": {"figure": null, "color": null}, "b4": {"figure": null, "color": null}, "c4": {"figure": null, "color": null}, "d4": {"figure": null, "color": null},
+            "e4": {"figure": null, "color": null}, "f4": {"figure": null, "color": null}, "g4": {"figure": null, "color": null}, "h4": {"figure": null, "color": null},
+            "a3": {"figure": null, "color": null}, "b3": {"figure": null, "color": null}, "c3": {"figure": null, "color": null}, "d3": {"figure": null, "color": null},
+            "e3": {"figure": null, "color": null}, "f3": {"figure": null, "color": null}, "g3": {"figure": null, "color": null}, "h3": {"figure": null, "color": null},
             "a2": {"figure": figures.pawn, "color": "white"}, "b2": {"figure": figures.pawn, "color": "white"}, "c2": {"figure": figures.pawn, "color": "white"}, "d2": {"figure": figures.pawn, "color": "white"},
             "e2": {"figure": figures.pawn, "color": "white"}, "f2": {"figure": figures.pawn, "color": "white"}, "g2": {"figure": figures.pawn, "color": "white"}, "h2": {"figure": figures.pawn, "color": "white"},
             "a1": {"figure": figures.rook, "color": "white"}, "b1": {"figure": figures.knight, "color": "white"}, "c1": {"figure": figures.bishop, "color": "white"}, "d1": {"figure": figures.queen, "color": "white"},
@@ -126,6 +130,14 @@
         }
     },
     methods: {
+        getLegalMoves(start) {
+          var moves = [];
+          var piece = this.position[start];
+
+          if (piece.figure == "♟︎") {
+            return ["a3", "a4"]
+          }
+        },
         storeClick(pos) {
           if (this.start == '') {
               this.start = pos;
@@ -136,7 +148,9 @@
         },
         movePiece(start, end) {
           this.position[end].figure = this.position[start].figure;
+          this.position[end].color = this.position[start].color;
           this.position[start].figure = '';
+          this.position[start].color = '';
 
           this.start = '';
           this.end = '';

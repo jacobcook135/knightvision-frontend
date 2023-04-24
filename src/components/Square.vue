@@ -1,5 +1,5 @@
 <template>
-    <button :id="pos" :class="'square ' + color + '-square ' + state?.color + '-piece'">{{ state?.figure }}</button>
+    <button :id="pos" :class="'square ' + color + '-square ' + state?.color + '-piece ' + legalMove">{{ state?.figure }}</button>
 </template>
  
 <script lang="js">
@@ -9,10 +9,20 @@ export default {
         state: Object,
         pos: String,
         color: String,
+        legalMoves: Array,
     },
     mounted() {
+    },
+    computed: {
+        legalMove() {
+            if (this.legalMoves.includes(this.pos))
+                return 'legal-move';
+            else
+                return '';
+        },
     }
 }
+
 </script>
 
 <style scoped>
@@ -31,7 +41,9 @@ export default {
 .light-square { background: #8a2323; }
 .dark-square { background: #150cb0; }
 
-.white-piece {color: #fff;}
-.black-piece {color: #000;}
+.white-piece { color: #fff; }
+.black-piece { color: #000; }
+
+.legal-move { background: yellow; }
 
 </style>

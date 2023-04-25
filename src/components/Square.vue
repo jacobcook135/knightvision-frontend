@@ -15,10 +15,11 @@ export default {
     },
     computed: {
         legalMove() {
-            if (this.legalMoves.includes(this.pos))
+            if (this.legalMoves.includes(this.pos)) {
                 return 'legal-move';
-            else
+            } else {
                 return '';
+            }
         },
     }
 }

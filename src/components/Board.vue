@@ -140,28 +140,39 @@
       moveFile(current, number) {
         return this.getFile(current) + (parseInt(this.getRank(current)) + number);
       },
+      getPawnMoves(piece, current) {
+        var startingRank;
+        var legalMoves = [];
+        
+        if (piece.color == "white") {
+          startingRank = 2;
+
+          legalMoves.push(this.moveFile(current, 1));
+
+          if (this.getRank(current) == startingRank)
+            legalMoves.push(this.moveFile(current, 2));
+        } else {
+          startingRank = 7;
+          legalMoves.push(this.moveFile(current, -1));
+
+          if (this.getRank(current) == startingRank)
+            legalMoves.push(this.moveFile(current, -2));
+        }
+
+        if (this.getRank(current) == startingRank) {
+        }
+
+        return legalMoves;
+      },
       setLegalMoves(current) {
         var piece = this.position[current];
 
-        if (piece.figure == "♟︎") {
-          var startingRank;
-          
-          if (piece.color == "white") {
-            startingRank = 2;
-            this.legalMoves.push(this.moveFile(current, 1));
-
-            if (this.getRank(current) == startingRank)
-              this.legalMoves.push(this.moveFile(current, 2));
-          } else {
-            startingRank = 7;
-            this.legalMoves.push(this.moveFile(current, -1));
-
-            if (this.getRank(current) == startingRank)
-              this.legalMoves.push(this.moveFile(current, -2));
-          }
-
-          if (this.getRank(current) == startingRank) {
-          }
+        switch (piece.figure) {
+          case "♟︎":
+            this.legalMoves = this.getPawnMoves(piece, current);
+            break;
+          default:
+            break;
         }
       },
       storeClick(pos) {

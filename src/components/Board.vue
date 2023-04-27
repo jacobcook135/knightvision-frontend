@@ -97,11 +97,6 @@
 <script lang="js">
   import Square from '../components/Square.vue';
 
-  const figures = {
-    "rook": "♜", "knight": "♞", "bishop": "♝",
-    "queen": "♛", "king": "♚", "pawn": "♟︎"
-  };
-
   export default {
     name: 'Board',
     components: { Square },
@@ -111,10 +106,10 @@
           end: '',
           legalMoves: [],
           position: {
-            "a8": {"figure": figures.rook, "color": "black"}, "b8": {"figure": figures.knight, "color": "black"}, "c8": {"figure": figures.bishop, "color": "black"}, "d8": {"figure": figures.queen, "color": "black"},
-            "e8": {"figure": figures.king, "color": "black"}, "f8": {"figure": figures.bishop, "color": "black"}, "g8": {"figure": figures.knight, "color": "black"}, "h8": {"figure": figures.rook, "color": "black"},
-            "a7": {"figure": figures.pawn, "color": "black"}, "b7": {"figure": figures.pawn, "color": "black"}, "c7": {"figure": figures.pawn, "color": "black"}, "d7": {"figure": figures.pawn, "color": "black"},
-            "e7": {"figure": figures.pawn, "color": "black"}, "f7": {"figure": figures.pawn, "color": "black"}, "g7": {"figure": figures.pawn, "color": "black"}, "h7": {"figure": figures.pawn, "color": "black"},
+            "a8": {"figure": "rook", "color": "black"}, "b8": {"figure": "knight", "color": "black"}, "c8": {"figure": "bishop", "color": "black"}, "d8": {"figure": "queen", "color": "black"},
+            "e8": {"figure": "king", "color": "black"}, "f8": {"figure": "bishop", "color": "black"}, "g8": {"figure": "knight", "color": "black"}, "h8": {"figure": "rook", "color": "black"},
+            "a7": {"figure": "pawn", "color": "black"}, "b7": {"figure": "pawn", "color": "black"}, "c7": {"figure": "pawn", "color": "black"}, "d7": {"figure": "pawn", "color": "black"},
+            "e7": {"figure": "pawn", "color": "black"}, "f7": {"figure": "pawn", "color": "black"}, "g7": {"figure": "pawn", "color": "black"}, "h7": {"figure": "pawn", "color": "black"},
             "a6": {"figure": null, "color": null}, "b6": {"figure": null, "color": null}, "c6": {"figure": null, "color": null},  "d6": {"figure": null, "color": null},
             "e6": {"figure": null, "color": null}, "f6": {"figure": null, "color": null}, "g6": {"figure": null, "color": null}, "h6": {"figure": null, "color": null},
             "a5": {"figure": null, "color": null}, "b5": {"figure": null, "color": null}, "c5": {"figure": null, "color": null}, "d5": {"figure": null, "color": null},
@@ -123,10 +118,10 @@
             "e4": {"figure": null, "color": null}, "f4": {"figure": null, "color": null}, "g4": {"figure": null, "color": null}, "h4": {"figure": null, "color": null},
             "a3": {"figure": null, "color": null}, "b3": {"figure": null, "color": null}, "c3": {"figure": null, "color": null}, "d3": {"figure": null, "color": null},
             "e3": {"figure": null, "color": null}, "f3": {"figure": null, "color": null}, "g3": {"figure": null, "color": null}, "h3": {"figure": null, "color": null},
-            "a2": {"figure": figures.pawn, "color": "white"}, "b2": {"figure": figures.pawn, "color": "white"}, "c2": {"figure": figures.pawn, "color": "white"}, "d2": {"figure": figures.pawn, "color": "white"},
-            "e2": {"figure": figures.pawn, "color": "white"}, "f2": {"figure": figures.pawn, "color": "white"}, "g2": {"figure": figures.pawn, "color": "white"}, "h2": {"figure": figures.pawn, "color": "white"},
-            "a1": {"figure": figures.rook, "color": "white"}, "b1": {"figure": figures.knight, "color": "white"}, "c1": {"figure": figures.bishop, "color": "white"}, "d1": {"figure": figures.queen, "color": "white"},
-            "e1": {"figure": figures.king, "color": "white"}, "f1": {"figure": figures.bishop, "color": "white"}, "g1": {"figure": figures.knight, "color": "white"}, "h1": {"figure": figures.rook, "color": "white"},
+            "a2": {"figure": "pawn", "color": "white"}, "b2": {"figure": "pawn", "color": "white"}, "c2": {"figure": "pawn", "color": "white"}, "d2": {"figure": "pawn", "color": "white"},
+            "e2": {"figure": "pawn", "color": "white"}, "f2": {"figure": "pawn", "color": "white"}, "g2": {"figure": "pawn", "color": "white"}, "h2": {"figure": "pawn", "color": "white"},
+            "a1": {"figure": "rook", "color": "white"}, "b1": {"figure": "knight", "color": "white"}, "c1": {"figure": "bishop", "color": "white"}, "d1": {"figure": "queen", "color": "white"},
+            "e1": {"figure": "king", "color": "white"}, "f1": {"figure": "bishop", "color": "white"}, "g1": {"figure": "knight", "color": "white"}, "h1": {"figure": "rook", "color": "white"},
           }
         }
     },
@@ -137,8 +132,22 @@
       getRank(pos) {
         return pos[1];
       },
-      moveFile(current, number) {
+      moveRank(current, number) {
         return this.getFile(current) + (parseInt(this.getRank(current)) + number);
+      },
+      moveFile(current, number) {
+        return (this.getFile(current) + number) + (this.getRank(current));
+      },
+      getDiagonalMoves(current, number) {
+        var possibleMoves = [];
+
+        possibleMoves.push(this.moveFile(this.moveRank(current, number), number));
+        possibleMoves.push(this.moveFile(this.moveRank(current, number), -number));
+        possibleMoves.push(this.moveFile(this.moveRank(current, -number), number));
+        possibleMoves.push(this.moveFile(this.moveRank(current, -number), -number));
+      
+        moves.push()
+
       },
       getPawnMoves(piece, current) {
         var startingRank;
@@ -147,20 +156,23 @@
         if (piece.color == "white") {
           startingRank = 2;
 
-          legalMoves.push(this.moveFile(current, 1));
+          if (this.position[this.moveRank(current, 1)].figure == null)
+            legalMoves.push(this.moveRank(current, 1));
 
-          if (this.getRank(current) == startingRank)
-            legalMoves.push(this.moveFile(current, 2));
+          if (this.getRank(current) == startingRank && this.position[this.moveRank(current, 2)].figure == null)
+            legalMoves.push(this.moveRank(current, 2));
         } else {
           startingRank = 7;
-          legalMoves.push(this.moveFile(current, -1));
 
-          if (this.getRank(current) == startingRank)
-            legalMoves.push(this.moveFile(current, -2));
-        }
+          if (this.position[this.moveRank(current, -1)].figure == null)
+            legalMoves.push(this.moveRank(current, -1));
+    
 
-        if (this.getRank(current) == startingRank) {
+          if (this.getRank(current) == startingRank && this.position[this.moveRank(current, -2)].figure == null)
+            legalMoves.push(this.moveRank(current, -2));
         }
+       
+        this.legalMoves.push(getDiagonalMoves(current, 1));
 
         return legalMoves;
       },
@@ -168,7 +180,7 @@
         var piece = this.position[current];
 
         switch (piece.figure) {
-          case "♟︎":
+          case "pawn":
             this.legalMoves = this.getPawnMoves(piece, current);
             break;
           default:

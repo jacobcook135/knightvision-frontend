@@ -1,8 +1,10 @@
 <template>
-    <button :id="pos" :class="'square ' + color + '-square ' + state?.color + '-piece ' + legalMove">{{ state?.figure }}</button>
+    <button :id="pos" :class="'square ' + color + '-square ' + state?.color + '-piece ' + legalMove">{{ figure }}</button>
 </template>
  
 <script lang="js">
+
+
 export default {
     name: "Square",
     props: {
@@ -10,6 +12,14 @@ export default {
         pos: String,
         color: String,
         legalMoves: Array,
+    },
+    data() {
+        return {
+            figures: {
+                "rook": "♜", "knight": "♞", "bishop": "♝",
+                "queen": "♛", "king": "♚", "pawn": "♟︎"
+            }
+        }
     },
     mounted() {
     },
@@ -21,6 +31,9 @@ export default {
                 return '';
             }
         },
+        figure() {
+            return this.figures[this.state?.figure];
+        }
     }
 }
 

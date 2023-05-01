@@ -4,6 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
+  <RouterLink to="/register">Register</RouterLink>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/knight-chess-piece.jpg" width="125" height="125" />
 

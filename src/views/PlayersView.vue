@@ -28,10 +28,10 @@ import axios from 'axios';
       },
       methods: {
           getPlayers() {
-              axios.get('http://127.0.0.1:8000/users/', {headers: {Accept: 'application/json', 'Content-Type': 'application/json'}})
-                  .then((response) => {
-                      this.players = response.data
-                  })
+            axios.get('http://127.0.0.1:8000/users/', {headers: {Accept: 'application/json', 'Content-Type': 'application/json'}})
+                .then((response) => {
+                    this.players = response.data
+                })
           }
       },
       mounted() {

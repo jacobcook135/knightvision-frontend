@@ -136,17 +136,36 @@
         return this.getFile(current) + (parseInt(this.getRank(current)) + number);
       },
       moveFile(current, number) {
-        return (this.getFile(current) + number) + (this.getRank(current));
+        var asciiValue = this.getFile(current).charCodeAt(0);
+        var newFile = String.fromCharCode(asciiValue + number);
+
+        return newFile + (this.getRank(current));
+      },
+      isValidPosition(pos) {
+        return this.getFile(pos) >= 'a' &&
+          this.getFile(pos) <= 'h' &&
+          this.getRank(pos) >= 1 &&
+          this.getRank(pos) <= 8;
+      },
+      isValidMove(start, end) {
+        console.log(start, end);
+        return start.color != end.color;
       },
       getDiagonalMoves(current, number) {
         var possibleMoves = [];
+        var validMoves = [];
 
         possibleMoves.push(this.moveFile(this.moveRank(current, number), number));
         possibleMoves.push(this.moveFile(this.moveRank(current, number), -number));
         possibleMoves.push(this.moveFile(this.moveRank(current, -number), number));
         possibleMoves.push(this.moveFile(this.moveRank(current, -number), -number));
 
-        return possibleMoves;
+        possibleMoves.forEach((move) => {
+          if (this.isValidPosition(move))
+            validMoves.push(move);
+        });
+        
+        return validMoves;
       },
       getPawnMoves(piece, current) {
         var startingRank;
@@ -167,16 +186,17 @@
           if (this.position[this.moveRank(current, -1)].figure == null)
             legalMoves.push(this.moveRank(current, -1));
     
-
           if (this.getRank(current) == startingRank && this.position[this.moveRank(current, -2)].figure == null)
             legalMoves.push(this.moveRank(current, -2));
         }
-        
+
         diagonalMoves.forEach((diagonalMove) =>{
           if (this.position[diagonalMove].figure != null){
             legalMoves.push(diagonalMove);
           }
         });
+        
+        legalMoves.filter(move => this.getRank(move) > this.getRank(current));
 
         return legalMoves;
       },
@@ -185,7 +205,7 @@
 
         switch (piece.figure) {
           case "pawn":
-            this.legalMoves = this.getPawnMoves(piece, current);
+            this.legalMoves = this.getPawnMoves(piece, current).filter(move => this.isValidMove(piece, this.position[move]))
             break;
           default:
             break;

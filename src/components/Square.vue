@@ -1,5 +1,5 @@
 <template>
-    <button :id="pos" :class="'square ' + color + '-square ' + state?.color + '-piece ' + legalMove">{{ figure }}</button>
+    <button :id="pos" :class="'square ' + square + computedColor + legalMove">{{ figure }}</button>
 </template>
  
 <script lang="js">
@@ -33,6 +33,12 @@ export default {
         },
         figure() {
             return this.figures[this.state?.figure];
+        },
+        computedColor() {
+            return this.state?.color ? this.state?.color + '-piece ' : '';
+        },
+        square() {
+            return this?.color ? this.color + '-square ' : '';
         }
     }
 }

@@ -146,10 +146,12 @@
         possibleMoves.push(this.moveFile(this.moveRank(current, -number), number));
         possibleMoves.push(this.moveFile(this.moveRank(current, -number), -number));
 
+        return possibleMoves;
       },
       getPawnMoves(piece, current) {
         var startingRank;
         var legalMoves = [];
+        var diagonalMoves = this.getDiagonalMoves(current, 1);
         
         if (piece.color == "white") {
           startingRank = 2;
@@ -169,9 +171,9 @@
           if (this.getRank(current) == startingRank && this.position[this.moveRank(current, -2)].figure == null)
             legalMoves.push(this.moveRank(current, -2));
         }
-        diagonalMoves = this.getDiagonalMoves(current, 1);
+        
         diagonalMoves.forEach((diagonalMove) =>{
-          if (diagonalMove.figure != null){
+          if (this.position[diagonalMove].figure != null){
             legalMoves.push(diagonalMove);
           }
         });

@@ -145,8 +145,6 @@
         possibleMoves.push(this.moveFile(this.moveRank(current, number), -number));
         possibleMoves.push(this.moveFile(this.moveRank(current, -number), number));
         possibleMoves.push(this.moveFile(this.moveRank(current, -number), -number));
-      
-        moves.push()
 
       },
       getPawnMoves(piece, current) {
@@ -171,8 +169,12 @@
           if (this.getRank(current) == startingRank && this.position[this.moveRank(current, -2)].figure == null)
             legalMoves.push(this.moveRank(current, -2));
         }
-       
-        this.legalMoves.push(getDiagonalMoves(current, 1));
+        diagonalMoves = this.getDiagonalMoves(current, 1);
+        diagonalMoves.forEach((diagonalMove) =>{
+          if (diagonalMove.figure != null){
+            legalMoves.push(diagonalMove);
+          }
+        });
 
         return legalMoves;
       },

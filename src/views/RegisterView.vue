@@ -21,10 +21,6 @@ import axios from 'axios';
     
     <button type="submit">Sign up</button>
   </form>
-
-  <h2>Created player</h2>
-  <div>Username: {{ player.username }}</div>
-  <div>Email: {{ player.email }}</div>
 </template>
 
 <style>
@@ -37,7 +33,6 @@ import axios from 'axios';
           return {
               username: "",
               email: "",
-              player: Object
           }
       },
       methods: {
@@ -47,14 +42,10 @@ import axios from 'axios';
               email: this.email,
               is_staff: false,
             })
-                .then((response) => {
-                    console.log(response);
-                    this.player = response.data
-                })
+              .then((response) => {
+                  this.$router.push(`/players/${response.data.id}/`);
+              })
           }
       },
-      mounted() {
-          this.createPlayer()
-      }
   }
 </script>

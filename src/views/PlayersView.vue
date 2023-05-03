@@ -3,9 +3,11 @@ import axios from 'axios';
 </script>
 
 <template>
-  <div v-for="player in players">
-    {{ player.username }}
-  </div>
+  <ul>
+    <div v-for="player in players">
+      <li><RouterLink :to="{ name: 'player', params: { id: player.id }}">{{ player.username }}</RouterLink></li>
+    </div>
+  </ul>
 </template>
 
 <style>

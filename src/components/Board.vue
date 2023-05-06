@@ -148,7 +148,6 @@
           this.getRank(pos) <= 8;
       },
       isValidMove(start, end) {
-        console.log(start, end);
         return start.color != end.color;
       },
       getDiagonalMoves(current, number) {

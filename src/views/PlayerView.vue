@@ -18,7 +18,7 @@ import axios from 'axios';
       },
       methods: {
           getPlayer() {
-            axios.get(`http://127.0.0.1:8000/users/${this.$route.params.id}/`,
+            axios.get(`http://127.0.0.1:8000/api/users/${this.$route.params.id}/`,
               {headers: {Accept: 'application/json', 'Content-Type': 'application/json'}})
               .then((response) => {
                   this.player = response.data

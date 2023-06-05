@@ -4,8 +4,8 @@ import axios from 'axios';
 
 <template>
   <ul>
-    <div v-for="player in players">
-      <li><RouterLink :to="{ name: 'player', params: { id: player.id }}">{{ player.username }}</RouterLink></li>
+    <div v-for="game in games">
+      <li><RouterLink :to="{ id: 'id', params: { id: game.id }}">{{ game.pgn }}</RouterLink></li>
     </div>
   </ul>
 </template>
@@ -25,19 +25,19 @@ import axios from 'axios';
   export default {
       data() {
           return {
-              players: []
+              games: []
           }
       },
       methods: {
-          getPlayers() {
-            axios.get('http://127.0.0.1:8000/api/users/', {headers: {Accept: 'application/json', 'Content-Type': 'application/json'}})
+          getGames() {
+            axios.get('http://127.0.0.1:8000/api/games/', {headers: {Accept: 'application/json', 'Content-Type': 'application/json'}})
                 .then((response) => {
-                    this.players = response.data
+                    this.games = response.data
                 })
           }
       },
       mounted() {
-          this.getPlayers()
+          this.getGames()
       }
   }
 </script>

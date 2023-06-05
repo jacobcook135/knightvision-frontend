@@ -37,7 +37,7 @@ import axios from 'axios';
       },
       methods: {
           createPlayer() {
-            axios.post('http://127.0.0.1:8000/users/', {
+            axios.post('http://127.0.0.1:8000/api/users/', {
               username: this.username,
               email: this.email,
               is_staff: false,
